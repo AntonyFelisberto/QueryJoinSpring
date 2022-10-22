@@ -1,9 +1,9 @@
 package com.example.joinqueryspring.service;
 
+import com.example.joinqueryspring.dto.OrderDTO;
 import com.example.joinqueryspring.model.Customer;
 import com.example.joinqueryspring.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,4 +21,9 @@ public class CustomerService {
     public List<Customer> findAllOrders() {
         return customerRepository.findAll();
     }
+
+    public List<OrderDTO> findOrderDTO() {
+        return customerRepository.getJoinInformation();
+    }
+
 }

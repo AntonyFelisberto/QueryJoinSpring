@@ -3,6 +3,7 @@ package com.example.joinqueryspring.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,14 +15,13 @@ import java.util.List;
 public class Customer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
     private String name;
     private String email;
     private String gender;
-
     @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cp_fk",referencedColumnName = "id")
+    @JoinColumn(name ="customerForeign",referencedColumnName = "customerId")
     private List<Product> products;
 
 }

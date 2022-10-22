@@ -1,5 +1,6 @@
 package com.example.joinqueryspring.controller;
 
+import com.example.joinqueryspring.dto.OrderDTO;
 import com.example.joinqueryspring.model.Customer;
 import com.example.joinqueryspring.service.CustomerService;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/customer")
 @AllArgsConstructor
 public class OrdemController {
 
@@ -26,6 +27,12 @@ public class OrdemController {
     public ResponseEntity<List<Customer>> findAllOrders(){
         List<Customer> newCustomer = customerService.findAllOrders();
         return new ResponseEntity<>(newCustomer, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByDTO")
+    public ResponseEntity<List<OrderDTO>> findOrderDTO(){
+        List<OrderDTO> orderDTO = customerService.findOrderDTO();
+        return new ResponseEntity<>(orderDTO, HttpStatus.OK);
     }
 
 }
